@@ -95,13 +95,14 @@ public class PauseScreen extends Screen {
 		Point p = e.getPoint();
 		
 		if (menuButton.contains(p.x, p.y)) {
+			GameScreen gameScreen = (GameScreen) screenManager.getScreen(screenToReturnTo);
+			gameScreen.setup();
+			
 			screenManager.switchScreen(ScreenManager.MENU_SCREEN);
 			
 			if (screenManager.getClient().getIsConnected())
 				screenManager.getClient().sendMessage(MessageType.SESSION_LEAVE, "", null);
 			
-			GameScreen gameScreen = (GameScreen) screenManager.getScreen(screenToReturnTo);
-			gameScreen.setup();
 		} else if (backButton.contains(p.x, p.y)) {
 			turnToGameScreen();
 		}
