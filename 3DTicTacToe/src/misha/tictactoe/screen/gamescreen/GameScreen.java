@@ -126,6 +126,7 @@ public abstract class GameScreen extends Screen {
 	
 	@Override
 	public void mouseWheelMoved(MouseWheelEvent e) {
+		renderer.getEntityManager().redrawNextFrame();
 		Point3D.scale += e.getUnitsToScroll() * 0.01;
 	}
 	
